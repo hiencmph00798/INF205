@@ -1,0 +1,379 @@
+-- source default
+<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="_Default" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+    
+        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="Ma_sanpham" DataSourceID="SqlDataSource1" ForeColor="#333333" GridLines="None">
+            <AlternatingRowStyle BackColor="White" />
+            <Columns>
+                <asp:BoundField DataField="Ma_sanpham" HeaderText="Mã sản phẩm" ReadOnly="True" SortExpression="Ma_sanpham" />
+                <asp:BoundField DataField="Ma_loaiSP" HeaderText="Mã loại sản phẩm" SortExpression="Ma_loaiSP" />
+                <asp:BoundField DataField="Ten_sanpham" HeaderText="Tên sản phẩm" SortExpression="Ten_sanpham" />
+                <asp:BoundField DataField="Sohieumay" HeaderText="Số hiệu máy" SortExpression="Sohieumay" />
+                <asp:BoundField DataField="Gia" HeaderText="Giá" SortExpression="Gia" />
+                <asp:BoundField DataField="LOAI_SANPHAM_Ma_loaiSP" HeaderText="LOAI_SANPHAM_Ma_loaiSP" SortExpression="LOAI_SANPHAM_Ma_loaiSP" />
+            </Columns>
+            <EditRowStyle BackColor="#2461BF" />
+            <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+            <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+            <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
+            <RowStyle BackColor="#EFF3FB" />
+            <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
+            <SortedAscendingCellStyle BackColor="#F5F7FB" />
+            <SortedAscendingHeaderStyle BackColor="#6D95E1" />
+            <SortedDescendingCellStyle BackColor="#E9EBEF" />
+            <SortedDescendingHeaderStyle BackColor="#4870BE" />
+        </asp:GridView>
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:Hiencmph00798_INF205ConnectionString2 %>" DeleteCommand="DELETE FROM [SAN_PHAM] WHERE [Ma_sanpham] = @Ma_sanpham" InsertCommand="INSERT INTO [SAN_PHAM] ([Ma_sanpham], [Ma_loaiSP], [Ten_sanpham], [Sohieumay], [Gia], [LOAI_SANPHAM_Ma_loaiSP]) VALUES (@Ma_sanpham, @Ma_loaiSP, @Ten_sanpham, @Sohieumay, @Gia, @LOAI_SANPHAM_Ma_loaiSP)" SelectCommand="SELECT * FROM [SAN_PHAM]" UpdateCommand="UPDATE [SAN_PHAM] SET [Ma_loaiSP] = @Ma_loaiSP, [Ten_sanpham] = @Ten_sanpham, [Sohieumay] = @Sohieumay, [Gia] = @Gia, [LOAI_SANPHAM_Ma_loaiSP] = @LOAI_SANPHAM_Ma_loaiSP WHERE [Ma_sanpham] = @Ma_sanpham">
+            <DeleteParameters>
+                <asp:Parameter Name="Ma_sanpham" Type="String" />
+            </DeleteParameters>
+            <InsertParameters>
+                <asp:Parameter Name="Ma_sanpham" Type="String" />
+                <asp:Parameter Name="Ma_loaiSP" Type="String" />
+                <asp:Parameter Name="Ten_sanpham" Type="String" />
+                <asp:Parameter Name="Sohieumay" Type="String" />
+                <asp:Parameter Name="Gia" Type="String" />
+                <asp:Parameter Name="LOAI_SANPHAM_Ma_loaiSP" Type="String" />
+            </InsertParameters>
+            <UpdateParameters>
+                <asp:Parameter Name="Ma_loaiSP" Type="String" />
+                <asp:Parameter Name="Ten_sanpham" Type="String" />
+                <asp:Parameter Name="Sohieumay" Type="String" />
+                <asp:Parameter Name="Gia" Type="String" />
+                <asp:Parameter Name="LOAI_SANPHAM_Ma_loaiSP" Type="String" />
+                <asp:Parameter Name="Ma_sanpham" Type="String" />
+            </UpdateParameters>
+        </asp:SqlDataSource>
+        <br />
+        <asp:DetailsView ID="DetailsView1" runat="server" AllowPaging="True" AutoGenerateRows="False" BackColor="White" BorderColor="#CC9966" BorderStyle="None" BorderWidth="1px" CellPadding="4" DataKeyNames="Ma_sanpham" DataSourceID="SqlDataSource1" Height="50px" Width="402px">
+            <EditRowStyle BackColor="#FFCC66" Font-Bold="True" ForeColor="#663399" />
+            <Fields>
+                <asp:BoundField DataField="Ma_sanpham" HeaderText="Mã sản phẩm" ReadOnly="True" SortExpression="Ma_sanpham" />
+                <asp:BoundField DataField="Ma_loaiSP" HeaderText="Mã loại sản phẩm" SortExpression="Ma_loaiSP" />
+                <asp:BoundField DataField="Ten_sanpham" HeaderText="Tên sản phẩm" SortExpression="Ten_sanpham" />
+                <asp:BoundField DataField="Sohieumay" HeaderText="Số hiệu máy" SortExpression="Sohieumay" />
+                <asp:BoundField DataField="Gia" HeaderText="Giá" SortExpression="Gia" />
+                <asp:BoundField DataField="LOAI_SANPHAM_Ma_loaiSP" HeaderText="LOAI_SANPHAM_Ma_loaiSP" SortExpression="LOAI_SANPHAM_Ma_loaiSP" />
+                <asp:CommandField ButtonType="Button" ShowInsertButton="True" />
+            </Fields>
+            <FooterStyle BackColor="#FFFFCC" ForeColor="#330099" />
+            <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="#FFFFCC" />
+            <PagerStyle BackColor="#FFFFCC" ForeColor="#330099" HorizontalAlign="Center" />
+            <RowStyle BackColor="White" ForeColor="#330099" />
+        </asp:DetailsView>
+        <br />
+        <asp:Button ID="Button1" runat="server" OnClick="Button1_Click1" PostBackUrl="~/tim kiem.aspx" Text="Tìm kiếm" />
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <br />
+    
+    </div>
+    </form>
+</body>
+</html>
+
+-- source tim kiem
+<%@ Page Language="C#" AutoEventWireup="true" CodeFile="tim kiem.aspx.cs" Inherits="Tìm_kiếm" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+    
+        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="Ma_sanpham" DataSourceID="SqlDataSource1" ForeColor="#333333" GridLines="None">
+            <AlternatingRowStyle BackColor="White" />
+            <Columns>
+                <asp:BoundField DataField="Ma_sanpham" HeaderText="Mã sản phẩm" ReadOnly="True" SortExpression="Ma_sanpham" />
+                <asp:BoundField DataField="Ma_loaiSP" HeaderText="Mã loại sản phẩm" SortExpression="Ma_loaiSP" />
+                <asp:BoundField DataField="Ten_sanpham" HeaderText="Tên sản phẩm" SortExpression="Ten_sanpham" />
+                <asp:BoundField DataField="Sohieumay" HeaderText="Số hiệu máy" SortExpression="Sohieumay" />
+                <asp:BoundField DataField="Gia" HeaderText="Giá" SortExpression="Gia" />
+                <asp:BoundField DataField="LOAI_SANPHAM_Ma_loaiSP" HeaderText="LOAI_SANPHAM_Ma_loaiSP" SortExpression="LOAI_SANPHAM_Ma_loaiSP" />
+            </Columns>
+            <EditRowStyle BackColor="#2461BF" />
+            <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+            <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+            <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
+            <RowStyle BackColor="#EFF3FB" />
+            <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
+            <SortedAscendingCellStyle BackColor="#F5F7FB" />
+            <SortedAscendingHeaderStyle BackColor="#6D95E1" />
+            <SortedDescendingCellStyle BackColor="#E9EBEF" />
+            <SortedDescendingHeaderStyle BackColor="#4870BE" />
+        </asp:GridView>
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:Hiencmph00798_INF205ConnectionString3 %>" DeleteCommand="DELETE FROM [SAN_PHAM] WHERE [Ma_sanpham] = @Ma_sanpham" InsertCommand="INSERT INTO [SAN_PHAM] ([Ma_sanpham], [Ma_loaiSP], [Ten_sanpham], [Sohieumay], [Gia], [LOAI_SANPHAM_Ma_loaiSP]) VALUES (@Ma_sanpham, @Ma_loaiSP, @Ten_sanpham, @Sohieumay, @Gia, @LOAI_SANPHAM_Ma_loaiSP)" SelectCommand="SELECT Ma_sanpham, Ma_loaiSP, Ten_sanpham, Sohieumay, Gia, LOAI_SANPHAM_Ma_loaiSP FROM SAN_PHAM WHERE (Ma_sanpham LIKE @Param1)" UpdateCommand="UPDATE [SAN_PHAM] SET [Ma_loaiSP] = @Ma_loaiSP, [Ten_sanpham] = @Ten_sanpham, [Sohieumay] = @Sohieumay, [Gia] = @Gia, [LOAI_SANPHAM_Ma_loaiSP] = @LOAI_SANPHAM_Ma_loaiSP WHERE [Ma_sanpham] = @Ma_sanpham">
+            <DeleteParameters>
+                <asp:Parameter Name="Ma_sanpham" Type="String" />
+            </DeleteParameters>
+            <InsertParameters>
+                <asp:Parameter Name="Ma_sanpham" Type="String" />
+                <asp:Parameter Name="Ma_loaiSP" Type="String" />
+                <asp:Parameter Name="Ten_sanpham" Type="String" />
+                <asp:Parameter Name="Sohieumay" Type="String" />
+                <asp:Parameter Name="Gia" Type="String" />
+                <asp:Parameter Name="LOAI_SANPHAM_Ma_loaiSP" Type="String" />
+            </InsertParameters>
+            <SelectParameters>
+                <asp:ControlParameter ControlID="txttimkiem" Name="Param1" PropertyName="Text" />
+            </SelectParameters>
+            <UpdateParameters>
+                <asp:Parameter Name="Ma_loaiSP" Type="String" />
+                <asp:Parameter Name="Ten_sanpham" Type="String" />
+                <asp:Parameter Name="Sohieumay" Type="String" />
+                <asp:Parameter Name="Gia" Type="String" />
+                <asp:Parameter Name="LOAI_SANPHAM_Ma_loaiSP" Type="String" />
+                <asp:Parameter Name="Ma_sanpham" Type="String" />
+            </UpdateParameters>
+        </asp:SqlDataSource>
+        <asp:DetailsView ID="DetailsView1" runat="server" AllowPaging="True" AutoGenerateRows="False" BackColor="White" BorderColor="#3366CC" BorderStyle="None" BorderWidth="1px" CellPadding="4" DataKeyNames="Ma_sanpham" DataSourceID="SqlDataSource1" Height="50px" Width="125px">
+            <EditRowStyle BackColor="#009999" Font-Bold="True" ForeColor="#CCFF99" />
+            <Fields>
+                <asp:BoundField DataField="Ma_sanpham" HeaderText="Mã sản phẩm" ReadOnly="True" SortExpression="Ma_sanpham" />
+                <asp:BoundField DataField="Ma_loaiSP" HeaderText="Mã loại sản phẩm" SortExpression="Ma_loaiSP" />
+                <asp:BoundField DataField="Ten_sanpham" HeaderText="Tên sản phẩm" SortExpression="Ten_sanpham" />
+                <asp:BoundField DataField="Sohieumay" HeaderText="Số hiệu máy" SortExpression="Sohieumay" />
+                <asp:BoundField DataField="Gia" HeaderText="Giá" SortExpression="Gia" />
+                <asp:BoundField DataField="LOAI_SANPHAM_Ma_loaiSP" HeaderText="LOAI_SANPHAM_Ma_loaiSP" SortExpression="LOAI_SANPHAM_Ma_loaiSP" />
+                <asp:CommandField ButtonType="Button" ShowDeleteButton="True" ShowEditButton="True" />
+            </Fields>
+            <FooterStyle BackColor="#99CCCC" ForeColor="#003399" />
+            <HeaderStyle BackColor="#003399" Font-Bold="True" ForeColor="#CCCCFF" />
+            <PagerStyle BackColor="#99CCCC" ForeColor="#003399" HorizontalAlign="Left" />
+            <RowStyle BackColor="White" ForeColor="#003399" />
+        </asp:DetailsView>
+        <br />
+        <asp:TextBox ID="txttimkiem" runat="server" Width="235px"></asp:TextBox>
+&nbsp;&nbsp;&nbsp;&nbsp;
+        <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Tìm kiếm" />
+        <br />
+        <br />
+        <br />
+        <asp:Button ID="Button2" runat="server" PostBackUrl="~/Default.aspx" Text="Thông tin sản phẩm" />
+    
+    </div>
+    </form>
+</body>
+</html>
+
+
+-- scrip csdl
+USE [Hiencmph00798_INF205]
+GO
+/****** Object:  Table [dbo].[SAN_PHAM]    Script Date: 06/06/2015 07:40:36 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[SAN_PHAM](
+	[Ma_sanpham] [varchar](5) NOT NULL,
+	[Ma_loaiSP] [varchar](5) NOT NULL,
+	[Ten_sanpham] [nvarchar](60) NOT NULL,
+	[Sohieumay] [char](10) NOT NULL,
+	[Gia] [char](10) NOT NULL,
+	[LOAI_SANPHAM_Ma_loaiSP] [varchar](5) NOT NULL,
+ CONSTRAINT [SAN_PHAM_pk] PRIMARY KEY CLUSTERED 
+(
+	[Ma_sanpham] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET ANSI_PADDING OFF
+GO
+INSERT [dbo].[SAN_PHAM] ([Ma_sanpham], [Ma_loaiSP], [Ten_sanpham], [Sohieumay], [Gia], [LOAI_SANPHAM_Ma_loaiSP]) VALUES (N'SP01', N'LSP01', N'PPT1689', N'PPT1689   ', N'0         ', N'LSP01')
+INSERT [dbo].[SAN_PHAM] ([Ma_sanpham], [Ma_loaiSP], [Ten_sanpham], [Sohieumay], [Gia], [LOAI_SANPHAM_Ma_loaiSP]) VALUES (N'SP02', N'LSP01', N'F900AC', N'F900Ab    ', N'20000000  ', N'LSP01')
+INSERT [dbo].[SAN_PHAM] ([Ma_sanpham], [Ma_loaiSP], [Ten_sanpham], [Sohieumay], [Gia], [LOAI_SANPHAM_Ma_loaiSP]) VALUES (N'SP03', N'LSP02', N'YH-2200', N'YH-2200   ', N'2000000   ', N'LSP02')
+INSERT [dbo].[SAN_PHAM] ([Ma_sanpham], [Ma_loaiSP], [Ten_sanpham], [Sohieumay], [Gia], [LOAI_SANPHAM_Ma_loaiSP]) VALUES (N'SP04', N'LSP02', N'YH-2200NC', N'YH-2200NC ', N'2500000   ', N'LSP02')
+INSERT [dbo].[SAN_PHAM] ([Ma_sanpham], [Ma_loaiSP], [Ten_sanpham], [Sohieumay], [Gia], [LOAI_SANPHAM_Ma_loaiSP]) VALUES (N'SP05', N'LSP03', N'YH-1014M', N'YH-1014M  ', N'2500000   ', N'LSP03')
+INSERT [dbo].[SAN_PHAM] ([Ma_sanpham], [Ma_loaiSP], [Ten_sanpham], [Sohieumay], [Gia], [LOAI_SANPHAM_Ma_loaiSP]) VALUES (N'SP16', N'LSP01', N'CMH1689', N'CMH1689   ', N'10        ', N'LSP01')
+INSERT [dbo].[SAN_PHAM] ([Ma_sanpham], [Ma_loaiSP], [Ten_sanpham], [Sohieumay], [Gia], [LOAI_SANPHAM_Ma_loaiSP]) VALUES (N'SP168', N'LSP02', N'CMH168', N'CMH168    ', N'0         ', N'LSP02')
+INSERT [dbo].[SAN_PHAM] ([Ma_sanpham], [Ma_loaiSP], [Ten_sanpham], [Sohieumay], [Gia], [LOAI_SANPHAM_Ma_loaiSP]) VALUES (N'SP169', N'LSP01', N'PPT169', N'PPT169    ', N'0         ', N'LSP01')
+INSERT [dbo].[SAN_PHAM] ([Ma_sanpham], [Ma_loaiSP], [Ten_sanpham], [Sohieumay], [Gia], [LOAI_SANPHAM_Ma_loaiSP]) VALUES (N'SP689', N'LSP02', N'CPTN689', N'CPTN689   ', N'0         ', N'LSP02')
+/****** Object:  Table [dbo].[PHU_KIEN]    Script Date: 06/06/2015 07:40:36 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[PHU_KIEN](
+	[Ma_phukien] [varchar](5) NOT NULL,
+	[Ten_phukien] [nvarchar](20) NOT NULL,
+	[Soluong] [int] NOT NULL,
+	[Ngaynhap] [smalldatetime] NOT NULL,
+	[Ngayxuat] [smalldatetime] NOT NULL,
+	[Gia] [char](20) NOT NULL,
+ CONSTRAINT [PHU_KIEN_pk] PRIMARY KEY CLUSTERED 
+(
+	[Ma_phukien] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET ANSI_PADDING OFF
+GO
+/****** Object:  Table [dbo].[NHAN_VIEN]    Script Date: 06/06/2015 07:40:36 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[NHAN_VIEN](
+	[Ma_nhanvien] [varchar](5) NOT NULL,
+	[Ten_nhanvien] [nvarchar](30) NOT NULL,
+	[Email] [varchar](20) NOT NULL,
+	[Diachi] [nvarchar](60) NOT NULL,
+	[SDT] [char](11) NOT NULL,
+ CONSTRAINT [NHAN_VIEN_pk] PRIMARY KEY CLUSTERED 
+(
+	[Ma_nhanvien] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET ANSI_PADDING OFF
+GO
+INSERT [dbo].[NHAN_VIEN] ([Ma_nhanvien], [Ten_nhanvien], [Email], [Diachi], [SDT]) VALUES (N'NV01', N'Nguy?n Vãn A', N'anv@gmail.com', N'Hoa B?ng - Yên H?a - Hà N?i', N'0987063777 ')
+INSERT [dbo].[NHAN_VIEN] ([Ma_nhanvien], [Ten_nhanvien], [Email], [Diachi], [SDT]) VALUES (N'NV02', N'Nguy?n Vãn B', N'bnv@gmail.com', N'Nguy?n Chí Thanh - Hà N?i', N'0987063888 ')
+INSERT [dbo].[NHAN_VIEN] ([Ma_nhanvien], [Ten_nhanvien], [Email], [Diachi], [SDT]) VALUES (N'NV03', N'Nguy?n Vãn C', N'cnv@gmail.com', N'Pháo Ðài Láng - Hà N?i', N'0987063999 ')
+INSERT [dbo].[NHAN_VIEN] ([Ma_nhanvien], [Ten_nhanvien], [Email], [Diachi], [SDT]) VALUES (N'NV04', N'Nguy?n Vãn D', N'dnv@gmail.com', N'Ð?i C?n - Hà N?i', N'0987063111 ')
+INSERT [dbo].[NHAN_VIEN] ([Ma_nhanvien], [Ten_nhanvien], [Email], [Diachi], [SDT]) VALUES (N'NV05', N'Nguy?n Vãn E', N'env@gmail.com', N'Kim Ngýu - Hà N?i', N'0987063666 ')
+/****** Object:  Table [dbo].[LOAI_SANPHAM]    Script Date: 06/06/2015 07:40:36 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[LOAI_SANPHAM](
+	[Ma_loaiSP] [varchar](5) NOT NULL,
+	[Ten_loaisp] [nvarchar](15) NOT NULL,
+ CONSTRAINT [LOAI_SANPHAM_pk] PRIMARY KEY CLUSTERED 
+(
+	[Ma_loaiSP] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET ANSI_PADDING OFF
+GO
+INSERT [dbo].[LOAI_SANPHAM] ([Ma_loaiSP], [Ten_loaisp]) VALUES (N'LSP01', N'Máy khâu bao')
+INSERT [dbo].[LOAI_SANPHAM] ([Ma_loaiSP], [Ten_loaisp]) VALUES (N'LSP02', N'Máy mai th?m')
+INSERT [dbo].[LOAI_SANPHAM] ([Ma_loaiSP], [Ten_loaisp]) VALUES (N'LSP03', N'Máy v?t lai')
+INSERT [dbo].[LOAI_SANPHAM] ([Ma_loaiSP], [Ten_loaisp]) VALUES (N'LSP04', N'Máy v?t s?')
+INSERT [dbo].[LOAI_SANPHAM] ([Ma_loaiSP], [Ten_loaisp]) VALUES (N'LSP05', N'Máy may tr?')
+/****** Object:  Table [dbo].[KHACH_HANG]    Script Date: 06/06/2015 07:40:36 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[KHACH_HANG](
+	[Ma_khachhang] [varchar](5) NOT NULL,
+	[Ten_khachhang] [nvarchar](40) NOT NULL,
+	[Diachi] [nvarchar](70) NOT NULL,
+	[Sodienthoai] [char](11) NOT NULL,
+	[So_CMND] [char](10) NOT NULL,
+	[Gioitinh] [nvarchar](5) NOT NULL,
+	[Nghe_nghiep] [nvarchar](30) NOT NULL,
+	[Khu_vuc] [nvarchar](20) NOT NULL,
+	[GIAO_DICH_Ma_giaodich] [varchar](5) NOT NULL,
+ CONSTRAINT [KHACH_HANG_pk] PRIMARY KEY CLUSTERED 
+(
+	[Ma_khachhang] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET ANSI_PADDING OFF
+GO
+INSERT [dbo].[KHACH_HANG] ([Ma_khachhang], [Ten_khachhang], [Diachi], [Sodienthoai], [So_CMND], [Gioitinh], [Nghe_nghiep], [Khu_vuc], [GIAO_DICH_Ma_giaodich]) VALUES (N'KH01', N'V? Bá Tiêp', N'H?i Dýõng', N'09789654321', N'123456789 ', N'Nam', N'K? sý', N'H?i Dýõng', N'GD01')
+INSERT [dbo].[KHACH_HANG] ([Ma_khachhang], [Ten_khachhang], [Diachi], [Sodienthoai], [So_CMND], [Gioitinh], [Nghe_nghiep], [Khu_vuc], [GIAO_DICH_Ma_giaodich]) VALUES (N'KH02', N'Cao M?nh Hi?n', N'Hýng Yên ', N'0979063758 ', N'145612966 ', N'Nam', N'Sinh viên', N'Hýng Yên', N'GD02')
+INSERT [dbo].[KHACH_HANG] ([Ma_khachhang], [Ten_khachhang], [Diachi], [Sodienthoai], [So_CMND], [Gioitinh], [Nghe_nghiep], [Khu_vuc], [GIAO_DICH_Ma_giaodich]) VALUES (N'KH03', N'Cao M?nh Ð?t', N'Hà N?i', N'0987888888 ', N'198764523 ', N'Nam', N'Phóng viên', N'Hà N?i', N'GD03')
+INSERT [dbo].[KHACH_HANG] ([Ma_khachhang], [Ten_khachhang], [Diachi], [Sodienthoai], [So_CMND], [Gioitinh], [Nghe_nghiep], [Khu_vuc], [GIAO_DICH_Ma_giaodich]) VALUES (N'KH04', N'Tr?n Th? L?a', N'H?i Ph?ng', N'0979063777 ', N'176895432 ', N'N?', N'Công nhân', N'H?i Ph?ng', N'GD04')
+/****** Object:  Table [dbo].[HOA_DON_PHU_KIEN]    Script Date: 06/06/2015 07:40:36 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[HOA_DON_PHU_KIEN](
+	[Ma_hoadonpk] [varchar](5) NOT NULL,
+	[Ma_phukien] [varchar](5) NOT NULL,
+	[Ma_giaodich] [varchar](5) NOT NULL,
+	[GIAO_DICH_Ma_giaodich] [varchar](5) NOT NULL,
+ CONSTRAINT [HOA_DON_PHU_KIEN_pk] PRIMARY KEY CLUSTERED 
+(
+	[Ma_hoadonpk] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET ANSI_PADDING OFF
+GO
+/****** Object:  Table [dbo].[HOA_DON]    Script Date: 06/06/2015 07:40:36 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[HOA_DON](
+	[Ma_hoadon] [varchar](5) NOT NULL,
+	[Ma_nhanvien] [varchar](5) NOT NULL,
+	[Ma_khachhang] [varchar](5) NOT NULL,
+	[Ma_sanpham] [varchar](5) NOT NULL,
+	[Ma_Giaodich] [varchar](5) NOT NULL,
+	[Ten_hoadon] [nvarchar](30) NOT NULL,
+	[Hinhthucthanhtoan] [nvarchar](20) NOT NULL,
+	[Thanhtien] [char](20) NOT NULL,
+	[Dattruoc] [char](20) NOT NULL,
+	[Conlai] [char](20) NOT NULL,
+	[Ngaylap] [smalldatetime] NOT NULL,
+	[GIAO_DICH_Ma_giaodich] [varchar](5) NOT NULL,
+	[KHACH_HANG_Ma_khachhang] [varchar](5) NOT NULL,
+	[NHAN_VIEN_Ma_nhanvien] [varchar](5) NOT NULL,
+ CONSTRAINT [HOA_DON_pk] PRIMARY KEY CLUSTERED 
+(
+	[Ma_hoadon] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET ANSI_PADDING OFF
+GO
+/****** Object:  Table [dbo].[GIAO_DICH]    Script Date: 06/06/2015 07:40:36 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[GIAO_DICH](
+	[Ma_giaodich] [varchar](5) NOT NULL,
+	[Ma_khachhang] [varchar](5) NOT NULL,
+	[Ma_sanpham] [varchar](5) NOT NULL,
+	[Ma_phukien] [varchar](5) NOT NULL,
+	[SAN_PHAM_Ma_sanpham] [varchar](5) NOT NULL,
+	[PHU_KIEN_Ma_phukien] [varchar](5) NOT NULL,
+ CONSTRAINT [GIAO_DICH_pk] PRIMARY KEY CLUSTERED 
+(
+	[Ma_giaodich] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET ANSI_PADDING OFF
+GO
